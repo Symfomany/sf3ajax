@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\File;
 
 
 class DefaultController extends Controller
@@ -23,7 +22,11 @@ class DefaultController extends Controller
      */
     public function uploadAction(Request $request)
     {
-        dump($request->files->get('image'));
+        $file  = $request->files->get('image');
+        dump($file->getClientOriginalExtension(), $file->getClientOriginalName(), $file->getClientMimeType());
+        dump($file);
+
+        $file->move('uploads');
         exit();
         return $this->render('default/index.html.twig');
     }

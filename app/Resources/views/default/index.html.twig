@@ -23,7 +23,6 @@
             <h3>Mon Upload Ajax</h3>
             <form action="{{ path("upload")}}" method="post" enctype="multipart/form-data">
                 <input type="file" capture accept="image/*" name="image" id="image">
-                <button class="btn btn-primary btn-sm" type="submit"  id="submit" name="button">Envoyer la photo !</button>
             </form>
       </div>
   {% endblock %}
@@ -47,7 +46,7 @@
       xhr.open('POST', '/upload', true);
       xhr.onload = function () {
         if (xhr.status === 200) {
-          submit.innerHTML = 'Uploaded!';
+          console.log('Ok...');
         } else {
           alert('An error occurred!');
         }
@@ -55,7 +54,7 @@
 
       xhr.send(formData);
     }
-    
+
 
 
     document.querySelector('input[type="file"]').addEventListener('change', function(e) {
